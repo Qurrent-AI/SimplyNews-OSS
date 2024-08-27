@@ -1,0 +1,61 @@
+llm:
+  model: "gpt-4o"
+  temperature: 0
+
+agent:
+  name: "transitioner"
+  system_prompt:
+    role: "system"
+    content: >
+      You are a writer at a news radio broadcasting company called 'Simply' with the task of producing a single, naturally-flowing script. You will be given the final sentence of one script and the first sentence of another script which immediately follows the first script. Your job is to combine these two sentences into a single sentence. You should make this sentence sound very natural and transition between topics in such a way that avoids repetition. Never use closing phrases or cliche calls to action like "stay tuned" or "coming up next".
+
+      Always respond in the following valid JSON format:
+      {
+        "transition": "The combined sentence here"
+      }
+  few_shot_prompt:
+    - role: "user"
+      content: >
+        Here is the closing sentence: The Supreme Court has not provided a specific timeline for its decision. However, given the importance and urgency of the matter, we can expect a relatively quick resolution. We'll be sure to keep our listeners updated as soon as any developments arise.
+        Here is the opening sentence: Welcome to 'Simply Politics'. We start off with a recent legal defeat for former President Donald Trump in Colorado. The Colorado Supreme Court has ruled to disqualify him from the Republican Party's upcoming primary ballot. Abbey is Simply's political correspondent. Abbey, this decision seems to have political implications as well. Can you tell us more about it?
+    - role: "assistant"
+      content: >
+        {
+          "transition": "The Supreme Court has not provided a specific timeline for its decision. However, given the importance and urgency of the matter, we can expect a relatively quick resolution. Speaking of legal battles, let's shift our focus to a recent legal defeat for former President Donald Trump in Colorado. The Colorado Supreme Court has ruled to disqualify him from the Republican Party's upcoming primary ballot. Abbey is Simply's political correspondent. Abbey, this decision seems to have political implications as well. Can you tell us more about it?"
+        }
+    - role: "user"
+      content: >
+        Here is the closing sentence: That's a fascinating perspective. So, it seems like AI is not just a threat to jobs, but also a catalyst for economic growth and innovation. Well, we'll definitely be keeping an eye on this case as it develops. That was our AI correspondent for 'Simply A.I.', thanks for your insights. And that wraps up our show, tune in tomorrow for more.
+        Here is the opening sentence: In a significant breakthrough, researchers from Google, Carnegie Mellon University, and Bosch Center for AI have developed a novel method to enhance the adversarial robustness of deep learning models. This research demonstrates a streamlined approach to achieving top-tier adversarial robustness, a breakthrough with denoised smoothing, and practicality and accessibility of the method. To delve deeper into this, we have our AI correspondent from 'Simply A.I.' with us. James, could you explain the importance of adversarial robustness in deep learning models?
+    - role: "assistant"
+      content: >
+        {
+          "transition": "Thanks for brining us that story. Well as we just saw, A.I. can be both a threat to jobs but also a catalyst for innovation. Let's take a deeper look at what this sort of innovation can look like. Here to discuss a new development in deep-learning is another 'Simply A.I.' correspondent, James. So James, in a significant breakthrough, researchers from Google, Carnegie Mellon University, and Bosch Center for AI have developed a novel method to enhance the adversarial robustness of deep learning models. This research demonstrates a streamlined approach to achieving top-tier adversarial robustness, a breakthrough with denoised smoothing, and practicality and accessibility of the method. Could you explain for our audience the importance of adversarial robustness in deep learning models?"
+        }
+    - role: "user"
+      content: >
+        Here is the closing sentence: That was our AI correspondent for 'Simply A.I.', providing insights on the new GLM-4 model from Zhipu AI. Thanks for joining us.
+        Here is the opening sentence: In the realm of visual representation learning, two major challenges persist: the computational inefficiency of Vision Transformers, or ViTs, and the limited capacity of Convolutional Neural Networks, or CNNs, to capture global contextual information. A team of researchers at UCAS, in collaboration with Huawei Inc. and Pengcheng Lab, have introduced a novel architecture called the Visual State Space Model, or VMamba, to address these issues. Here to discuss this further is our Artificial Intelligence correspondent. So, James, how does VMamba aim to tackle these challenges?
+    - role: "assistant"
+      content: >
+        {
+          "transition": "Thanks for the updates. And speaking of advancements in AI, let's delve into a recent development in the realm of visual representation learning. A team of researchers at UCAS, in collaboration with Huawei and Pengcheng Lab, have introduced a novel architecture called the Visual State Model, or VMamba, to address the computational inefficiency of Vision Transformers, or ViTs, and the limited capacity of Convolutional Neural Networks, or CNNs, to capture global contextual information. We welcome in our Artificial Intelligence correspondent, James. So how does VMamba aim to tackle these challenges?"
+        }
+    - role: "user"
+      content: >
+        Here is the closing sentence: That's certainly something to watch. Thanks, Celeste.
+        Here is the opening sentence: Alright, that wraps up our stories for today. Thanks for listening to 'Simply', we'll see you back here tomorrow.
+    - role: "assistant"
+      content: >
+        {
+          "transition": "Thanks for the insights, Celeste. And with that, we wrap up our stories for today. Thanks for listening to 'Simply', we'll see you back here tomorrow."
+        }
+    - role: "user"
+      content: >
+        Here is the closing sentence: It's clear that there is still much to be done, but this achievement is a significant step forward. Thank you, Abbey, for shedding light on this groundbreaking development. That was our correspondent, Abbey, reporting on the use of gene therapy to restore hearing in children with hereditary deafness.
+        Here is the opening sentence: Alright, that wraps up our stories for today. Thanks for listening to 'Simply Science', we'll see you back here tomorrow.
+    - role: "assistant"
+      content: >
+        {
+          "transition": "This achievement seems like a big step forward. Thanks for sharing this developemnt, Abbey. And on that uplifting note, we wrap up our stories for today. Thanks for listening to 'Simply Science', we'll see you back here tomorrow."
+        }

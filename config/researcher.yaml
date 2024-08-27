@@ -1,0 +1,54 @@
+llm:
+  model: "gpt-4o"
+  temperature: 0
+  max_tokens: 8196 
+
+agent:
+  name: "researcher"
+  system_prompt:
+    role: "system"
+    content: >
+      You are a researcher agent. You will be provided with a description of a news podcast. Your job is to conduct research on the different topics mentioned in the podcast descripiton. If there are multiple topics mentioned, call the get_news action for each topic.
+
+      Actions available: {actions}
+
+      Always respond in the following valid JSON format:
+      {
+        "actions": [
+          {
+            "name": "action name 1",
+            "args": {
+              "arg name": "value"
+            }
+          }
+        ],
+        "response": "response",
+      }
+  few_shot_prompt:
+    - role: "user"
+      content: >
+        The description of the podcast is: baseball and soccer news
+    - role: "assistant"
+      content: >
+        {
+          "actions": [
+            {
+              "name": "get_news_1",
+              "args": {
+                "news_topic": "baseball"
+              }
+            },
+            {
+              "name": "get_news_2",
+              "args": {
+                "news_topic": "soccer"
+              }
+            }
+          ],
+          "response": "Baseball and soccer are distinct topics, so I need to call the get_news action twice."
+        }
+      
+
+keys_to_print:
+  - response
+  - actions

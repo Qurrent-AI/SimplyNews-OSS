@@ -1,0 +1,78 @@
+llm:
+  model: "gpt-4o"
+  temperature: 0
+
+agent:
+  name: "scripter"
+  system_prompt:
+    role: "system"
+    content: >
+      You are a news copywriter at a news broadcasting company called Simply News. Your job is to take an article and write a podcast/debate between a news anchor named 'David' and a subject-matter correspondent named '_correspondent_' in a professional style, an example of which will be shortly provided. The host anchor guides the overall conversation and introduces the story at hand. This anchor, David, is responsible for leading the conversation to the expert author who provides additional commentary, details, and analysis of the story in more depth. The subject-matter expert is allowed to pull some extra context from outside the article if it helps listeners understand the topic in greater detail. The script should be a long and intellectually interesting conversation for educated listeners. The host anchor should not address the title of the correspondent beyond simply saying that they are a correspondent for the station (for example, you can say 'our correspondent' but not 'our technology correspondent'). Also avoid using names too much. In fact, the speakers' names should be used as little as possible. Do not end the script with a goodbye message. Do not include any closing statements and do not include a transition to the next story. Be sure to start and end the script with the same anchor host. Do not use first person voice at any point: the speakers should never refer to themselves and never say 'I' or 'me'.
+
+      Provide the full script for the conversation between the two anchors in the following valid JSON format:
+      {
+        "script": [
+          {
+            "author": "name_1", 
+            "message":"message 1"
+          }, 
+          {
+            "author": "correspondent_name",
+            "message":"message 2"
+          },
+          ...
+        ]
+      }
+      
+  few_shot_prompt:
+    - role: "user"
+      content: >
+        Here is the content of the next article to write the script for: There\u2019s been much talk of a resurgent San Francisco with the new technology wave of artificial intelligence washing over the software world. Indeed, Crunchbase funding data as well as interviews with startup investors and real estate industry professionals show the San Francisco Bay Area has become the undisputed epicenter of artificial intelligence.\nLast year, more than 50% of all global venture funding for AI-related startups went to companies headquartered in the Bay Area, Crunchbase data shows, as a cluster of talent congregates in the region.\nBeginning in Q1 2023, when OpenAI\u2019s ChatGPT reached 100 million users within months of launching, the amount raised by Bay Area startups in AI started trending up. That accelerated with OpenAI raising $10 billion from Microsoft \u2014 marking the largest single funding deal ever for an AI foundation model company. In that quarter, more than 75% of AI funding went to San Francisco Bay Area startups.\nAI-related companies based in the Bay Area went on to raise more than $27 billion in 2023, up from $14 billion in 2022, when the region\u2019s companies raised 29% of all AI funding.\nFrom a deal count perspective, Bay Area companies raised 17% of global rounds in this sector in 2023 \u2014 making the region the leading metro area in the U.S. That is an increase over 13% in 2022.\nThe figure also represents more than a third of AI deal counts in the U.S., and means the Bay Area alone had more AI-related startup funding deals than all countries outside of the U.S.\nBay Area footprint\nLeading Bay Area-based foundation model companies OpenAI, Anthropic and Inflection AI have each raised more than $1 billion \u2014 or much more \u2014 and have established major real estate footprints in San Francisco.\nOpenAI has closed on 500,000 square feet of office space in the city\u2019s Mission Bay district and Anthropic around 230,000 square feet in the Financial District.\n\u201cFrom a leasing standpoint, [AI] is the bright spot in San Francisco right now,\u201d said Derek Daniels, a regional director of research in San Francisco for commercial real estate brokerage Colliers, who has been following the trends closely.\nBy contrast, \u201cbig tech has been pulling back and reassessing space needs,\u201d he said.\nAccording to Daniels, the city\u2019s commercial real estate market bottomed out in the second half of 2023. While the San Francisco office space market still faces challenges, there is \u201cquality sublet space which is also seeing some demand\u201d for smaller teams, he said. And some larger tenants who have been out of the picture for office space of 100,000 square feet or more are starting to come back.\nCenter of gravity\nFifty percent of startups that graduated from the prestigious startup accelerator Y Combinator\u2019s April batch were AI-focused companies.\n\u201cMany of the founders who came to SF for the batch have decided to make SF home \u2014 for themselves, and for their companies,\u201d Garry Tan, president and CEO of Y Combinator, said in an announcement of the accelerator\u2019s winter 2024 batch.\nYC itself has expanded its office space in San Francisco\u2019s Dogpatch neighborhood adjacent to Mission Bay. \u201cWe are turning San Francisco\u2019s doom loop into a boom loop,\u201d Tan added.\nOf the batch 34 companies that graduated in March from 500 Global, another accelerator, 60% are in AI. Its next batch is closer to 80% with an AI focus, said Clayton Bryan, partner and head of the global accelerator fund.\nAround half of the companies in the recently graduated 500 Global batch are from outside the U.S., including Budapest, London and Singapore. But many want to set up shop in the Bay Area for the density of talent, events and know-how from hackathons, dinners and events, he said.\nStartup investors also see the Bay Area as the epicenter for AI.\n\u201cIn the more recent crop of AI companies there is a real center of gravity in the Bay Area,\u201d said Andrew Ferguson, a partner at Databricks Ventures, which has been actively investing in AI startups such as Perplexity AI, Unstructured Technologies, Anomalo, Cleanlab and Glean.\n\u201cThe Bay Area does not have a lock on good talent. But there\u2019s certainly a nucleus of very strong talent,\u201d he said.\nDatabricks Ventures, the venture arm of AI-enhanced data analytics unicorn Databricks, has made five investments in AI companies in the Bay Area in the past six months. In total, the firm has made around 25 portfolio company investments since the venture arm was founded in 2022, largely in the modern data stack.\nMoving back\nFreed from in-person office requirements during the pandemic, many young tech workers decamped from the expensive Bay Area to travel or work remotely in less expensive locales. Now, some are moving back to join the San Francisco AI scene.\n\u201cMany young founders are just moving back to the Bay Area, even if they were away for the last couple of years, in order to be a part of immersing themselves in the middle of the scene,\u201d said Stephanie Zhan, a partner at Sequoia Capital. \u201cIt\u2019s great for networking, for hiring, for learning about what\u2019s going on, what other products people are building.\u201d\nCoincidentally, Sequoia Capital subleased space to OpenAI in its early days, in an office above Dandelion Chocolates in San Francisco\u2019s Mission District.\nZhan presumes that many nascent AI companies aren\u2019t yet showing up in funding data, as they are still ideating or at pre-seed or seed funding, and will show up in future funding cycles.\nOutside the Bay\nWhile the Bay Area dominates for AI funding, it\u2019s important to note the obvious: Much of that comes from a few massive deals to the large startups based in the region, including OpenAI, Anthropic and Inflection AI.\nThere is a lot of AI startup and research activity elsewhere as well, Zhan noted, with researchers coming out of universities around the globe, including \u00c9cole Polytechnique in Paris, ETH Z\u00fcrich and the University of Cambridge and Oxford University in the U.K., to name a few. Lead researchers from the University of Toronto and University of Waterloo have also fed into generative AI technology in San Francisco and in Canada, Bryan said.\nWhile the U.S. has a strong lead, countries that are leading funding totals for AI-related startups outside of the U.S. are China, the U.K., Germany, Canada and France, according to Crunchbase data.\nLondon-based Stability AI kicked off the generative AI moment before ChatGPT with its text-to-image models in August 2022. Open source model developer Mistral AI, based in Paris, has raised large amounts led by Bay Area-based venture capital firms Lightspeed Venture Partners and Andreessen Horowitz.\nAnd in China, foundation model company Moonshot AI based in Beijing has raised more than $1 billion.\nBack to the Bay\nStill, the center of gravity in the Bay Area is driven by teams coming out of Big Tech or UC Berkeley and Stanford University who have a \u201chistory of turning those ideas into startups,\u201d said Ferguson.\nThe unique congregation of Big Tech companies, research, talent and venture capital in the Bay Area has placed the region at the forefront of AI.\n\u201cThe valuation of the AI companies and some of the revenue by the top end of the AI companies is driving that population migration,\u201d said 500 Global\u2019s Bryan. At a recent AI event at Hana House in Palo Alto, California, he found it interesting that most people were not originally from the Bay Area. \u201cEveryone now wants a direct piece or an indirect piece of that value that is going into AI.\u201d\nRelated Crunchbase Pro query\nIllustration: Dom Guzman\nStay up to date with recent funding rounds, acquisitions, and more with the Crunchbase Daily.\n67.1K Followers
+    - role: "user"
+      content: "Be sure to use the names 'David' and '_correspondent_' as the authors in your script! You need to start and end the script with 'David'."
+    - role: "user"
+      content: >
+        This script is fed to a text-to-speech model that often pronounces the term A.I. incorrectly. Anytime you see 'AI', 'ai', 'Ai', or other similar spellings, replace it with 'A.I.'
+    - role: "assistant"
+      content: >
+        {
+          "script": [
+            {
+                "author": "David",
+                "message": "San Francisco is experiencing a resurgence, driven by a new wave of artificial intelligence technology. According to Crunchbase funding data and insights from startup investors and real estate professionals, the Bay Area has become the epicenter of AI innovation. Last year, over 50% of global venture funding for AI-related startups went to companies headquartered in the Bay Area. Here to discuss this trend is is our correspondent, _correspondent_. So, how did the Bay Area become the focal point for AI funding?"
+            },
+            {
+                "author": "_correspondent_",
+                "message": "The Bay Area's dominance in AI funding can be attributed to several factors. First, there's a significant concentration of talent in the region. Many AI researchers and engineers are drawn to the Bay Area because of its established tech ecosystem, which includes leading universities like UC Berkeley and Stanford. Additionally, the success of companies like OpenAI, which raised $10 billion from Microsoft, has created a ripple effect, attracting more investment and talent to the area."
+            },
+            {
+                "author": "David",
+                "message": "The amount raised by Bay Area startups in AI began trending up significantly in the first quarter of 2023, coinciding with the rapid adoption of OpenAI's ChatGPT. What impact has this had on the local real estate market?"
+            },
+            {
+                "author": "_correspondent_",
+                "message": "Well, David, AI companies like OpenAI and Anthropic have secured large office spaces in San Francisco, with OpenAI closing on 500,000 square feet in the Mission Bay district and Anthropic taking around 230,000 square feet in the Financial District. This influx has provided a much-needed boost to the commercial real estate market, which had been struggling. According to Derek Daniels from Colliers, AI is currently the bright spot in San Francisco's leasing market."
+            },
+            {
+                "author": "David",
+                "message": "We're seeing that many young tech workers who left the Bay Area during the pandemic are now returning to join the AI scene. Being in the Bay Area allows them to immerse themselves in the AI ecosystem, benefiting from networking opportunities, hackathons, and other events. San Franisco isn't the only hub for AI activity, though. In terms up fundraising, how do other regions compare, and what does this mean for the global AI landscape?"
+            },
+            {
+                "author": "_correspondent_",
+                "message": "Well, David, Countries like China, the U.K., Germany, Canada, and France are leading in AI funding outside the U.S. For instance, London-based Stability AI and Paris-based Mistral AI have raised substantial amounts of funding. Additionally, universities around the world, such as École Polytechnique in Paris and the University of Toronto, are producing top-tier AI researchers. While the Bay Area remains a central hub, the global distribution of talent and innovation ensures a diverse and dynamic AI ecosystem."
+            },
+            {
+                "author": "David",
+                "message": "The unique combination of Big Tech companies, research institutions, and venture capital in the Bay Area seems to be a significant driver for its leadership in AI. How does this concentration of resources impact the development and commercialization of AI technologies?"
+            },
+            {
+                "author": "_correspondent_",
+                "message": "The concentration of resources in the Bay Area creates a fertile ground for the development and commercialization of AI technologies. The proximity of Big Tech companies, research institutions, and venture capital firms facilitates collaboration and accelerates the transition from research to market-ready products. This ecosystem supports startups at every stage, from ideation to scaling, and provides the necessary infrastructure and funding to bring innovative AI solutions to market. As a result, the Bay Area continues to lead in both the creation and commercialization of cutting-edge AI technologies."
+            },
+            {
+                "author": "David",
+                "message": "That was _correspondent_, from 'Simply News'. Thanks for the insights."
+            }
+          ]
+        }
+          

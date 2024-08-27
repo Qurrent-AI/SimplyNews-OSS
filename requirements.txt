@@ -1,0 +1,5 @@
+qurrent
+aiohttp
+quart
+uvloop
+pydub
