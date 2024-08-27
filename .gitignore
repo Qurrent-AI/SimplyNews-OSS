@@ -3,3 +3,4 @@ config.yaml
 llmlogs/
 *.mp3
 !agi_house_demo.mp3
+__pycache__
