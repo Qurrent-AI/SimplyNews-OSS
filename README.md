@@ -4,4 +4,4 @@ Winning project at the AGI House Open-Source Agent Hackathon: https://app.agihou
 
 Qurrent is building AI agents for companies -- please reach out!
 
-![Powered by Groq](./groq.png)
+<img src="./groq.png" alt="Powered by Groq" width="200"/>
